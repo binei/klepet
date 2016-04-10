@@ -99,7 +99,16 @@ $(document).ready(function() {
     for (var i=0; i < uporabniki.length; i++) {
       $('#seznam-uporabnikov').append(divElementEnostavniTekst(uporabniki[i]));
     }
+    
+    $('#seznam-uporabnikov').click(function(vzdevek) {
+      var uporabnik = $(vzdevek.target).text();
+      $('#poslji-sporocilo').val('/zasebno "' + uporabnik + '"');
+      $('#poslji-sporocilo').focus();
+    });
+    
   });
+  
+  
 
   setInterval(function() {
     socket.emit('kanali');
